@@ -1,17 +1,17 @@
-use towerdefense;
+use towerdefensemain;
 
 -- ТРАНЗАКЦИОННЫЕ
 -- Добавить нового пользователя
-INSERT INTO users VALUES ('10', "Kuper", true, 1000);
+INSERT INTO users (name, isadmin, money) VALUES ("Kuper", true, 1000);
 
 -- Изменять данные пользователя
 Update users
-set money =1000
-where ID=0;
+set money =70000
+where id = 11;
 
 -- Удалить пользователя
 DELETE FROM users
-WHERE ID=10;
+WHERE ID=11;
 
 -- Дать пользователю административные права
 UPDATE users
@@ -19,19 +19,19 @@ SET isadmin=true
 WHERE id=5;
 
 -- Добавить нового героя
-INSERT INTO heroes VALUES (10, "Новый воин", "Биография нового воина", "Купер", 20);
+INSERT INTO heroes(feature, biography, name, levelnumber) VALUES ("Новый воин", "Биография нового воина", "Купер", 20);
 
 -- Добавить новую карту
-INSERT INTO maps VALUES (10, 30, "Великий холм", 10);
+INSERT INTO maps(waves, name, levelnumber) VALUES (30, "Великий холм", 10);
 
 -- Добавить новую экипировку
-INSERT INTO equipments VALUES (10, "Дает небольшую прибавку к ловкости", "Уровень: 10", "Амулет ловкости");
+INSERT INTO equipments(description, conditions, name) VALUES ("Дает небольшую прибавку к ловкости", "Уровень: 10", "Амулет ловкости");
 
 -- Редактировать героя
 UPDATE heroes
 SET feature="Это великий новый герой, доступный только избранным",
 levelnumber=100
-WHERE ID=10;
+WHERE ID=11;
 
 -- Редактировать карту
 UPDATE maps
@@ -41,12 +41,12 @@ WHERE id=5;
 -- Редактировать экипировку
 UPDATE equipments
 SET name="Амулет сильной ловкости"
-WHERE id=10;
+WHERE id=11;
 
 -- Справочные (оперативные запросы)
 -- Показать все достижения доступны до 5 уровня
 SELECT * FROM achievements
-WHERE number<=5 order by number;
+WHERE levelnumber<=5 order by LevelNumber;
 
 -- Показать карты где надо пройти больше 30 волн
 SELECT * FROM maps
@@ -65,7 +65,7 @@ SELECT *FROM events
 WHERE countofconditions=3;
 
 -- Справочные расчетные(аналитические запросы)
--- Показать количество пользователей-администраторов и обычных пользователей
+-- Показать количество пользователей-администраторов
 SELECT COUNT(*) AS CountOfUsers_Admin FROM users WHERE IsAdmin=true;
 
 -- Показать количество пользователей, выполнивших  ивент 1
@@ -77,7 +77,7 @@ SELECT SUM(Reward) as allrewards FROM events;
 -- Показать количество открытых башен и героев у пользователей
 SELECT DISTINCT (users.id) as ID, (select COUNT(*) from users_to_towers where user_id=users.id) as TOWERS, (select COUNT(*) from users_to_heroes where user_id=users.id) as HEROES
 from users, users_to_towers, users_to_heroes
-where users.id=users_to_towers.user_id or users.id=users_to_heroes.user_id;
+where users.id=users_to_towers.user_id or users.id=users_to_heroes.user_id order by users.id;
 
 -- Показать общую цену всех товаров
 SELECT SUM(price) as allprice FROM goods;
