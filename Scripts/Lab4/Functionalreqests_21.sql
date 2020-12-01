@@ -65,8 +65,8 @@ SELECT *FROM events
 WHERE countofconditions=3;
 
 -- Справочные расчетные(аналитические запросы)
--- Показать количество пользователей-администраторов
-SELECT COUNT(*) AS CountOfUsers_Admin FROM users WHERE IsAdmin=true;
+-- Показать процент пользователей-администраторов
+SELECT 100/(COUNT(*)/(SELECT COUNT(*) FROM users WHERE isadmin=true)) AS "Процент администраторов" FROM users;
 
 -- Показать количество пользователей, выполнивших  ивент 1
  SELECT COUNT(*) as countsofeventstousers FROM users_to_events WHERE event_id=1;

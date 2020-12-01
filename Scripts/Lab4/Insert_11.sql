@@ -1,11 +1,13 @@
 -- INSERT FOR MY BASE(5 шт)
 use towerdefensemain;
+-- Добавить новые карты
 INSERT INTO maps(name, waves, levelnumber) VALUES
 ("Гиблое болото", 15, 10),
 ("Зеленая топь", 125, 30),
 ("Темный ручей", 150, 50),
 ("Ведьмины острова", 115, 40);
 
+-- Добавить новые экипировки
 INSERT INTO equipments(Name, Description, Conditions) VALUES 
 ('Лук яда', 
 'Лук, отравляющий стрелы Адоры, которые впоследствии наносят дополнительный урон врагам', 
@@ -17,16 +19,19 @@ INSERT INTO equipments(Name, Description, Conditions) VALUES
 'Амулет, немного повышающий все характеристики героя', 
 'Уровень: 10; Интеллект: 15');
 
+-- Добавить новые прокачки
 INSERT INTO pumps(name, price) VALUES
 ("Все товары эффективней", 350),
 ("Увеличен опыт за прохождение карт", 1000),
 ("Увеличенный шанс найти магический предмет", 500);
 
+-- Добавить новые достижения
 INSERT INTO achievements(name, reward, levelnumber) VALUES
 ("Получить 1000000 игровой валюты", 10000, 0),
 ("Получить уровень аккаунт 100", 20000, 0),
 ("Приобрести как минум 1 товар каждого вида", 15000, 10);
 
+-- Добавить новых пользователей
 INSERT INTO users(name, isadmin, money) VALUES
 ("Qusannca", false, 1300),
 ("Onerifri", true, 250000),
@@ -36,6 +41,7 @@ INSERT INTO users(name, isadmin, money) VALUES
 
 -- INSERT FOR BASE BDCLINIC(6 шт)
 use bdclinic;
+-- Добавить новые адреса клиник
 INSERT INTO address(region, settlement, district, street, house_number, flat_number) VALUES
 ("Волгоградская область", "Волгоград", "Центральный район", "ул. Быкова", 5, 3),
 ("Краснодарский край", "Краснодар", "Центральный район", "ул. Красная", 10, 15),
@@ -43,14 +49,17 @@ INSERT INTO address(region, settlement, district, street, house_number, flat_num
 ("Волгоградская область", "Волгоград", "Ворошиловский", "улица Читинская", 56, null),
 ("Краснодарский край", "Краснодар", "Центральный", "улица Быкова", 5, 7);
 
+-- Добавить новые кабинеты
 INSERT INTO cabinet(number) VALUES
 (123), (11), (35), (12), (5);
 
+-- Добавить новые клиники
 INSERT INTO clinic(firstname, phone_number, license) VALUES
 ("Клиника имени Иванова", '345-12-56-4', "QWER License..."),
 ("Центральная государственная больница", '567-32-81-9', "CENTR License..."),
 ("Роксон, медицинская клиника", '83‒30‒82', "АКЦИОНЕРНОЕ ОБЩЕСТВО «Компании РОКСОН Обособленное подразделение в городе Волгоград");
 
+-- Добавить новых людей
 INSERT INTO people(surname, firstname, patrynymic, sex, birthday) VALUES
 ("Петров", "Иван", "Петрович", 'М', '2000-10-05'),
 ("Лебедева", "Жанель", "Платоновна", 'Ж', '1978-01-27'),
@@ -58,6 +67,7 @@ INSERT INTO people(surname, firstname, patrynymic, sex, birthday) VALUES
 ("Нектов", "Эйтибор", "Артемович", 'М', '1994-07-29'),
 ("Васютин", "Сакр", "Леонидович", 'М', '1992-04-22');
 
+-- Добавить новые расписания
 INSERT INTO schedule(days_of_week, hours_start, hours_end) VALUES
 ('01', '12:00:00', '16:00:00'), 
 ('02', '16:00:00', '21:00:00'),
@@ -65,6 +75,7 @@ INSERT INTO schedule(days_of_week, hours_start, hours_end) VALUES
 ('04', '15:30:00', '20:30:00'), 
 ('05', '11:00:00', '15:00:00');
 
+-- Добавить новых клиентов с учетом старых
 -- если объект с id = 1 уже есть, то игнорируем сообщение об ошибке и не вставляем новый объект в таблицу game_object
 INSERT IGNORE INTO people(id_of_people, surname, firstname, patrynymic, sex, birthday) VALUES
 (1,"Травникова", "Линна", "Николаевна", 'Ж', '1994-8-18');
