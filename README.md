@@ -16,3 +16,6 @@
 БД с пользователями
 
 ![БД с пользователями](https://github.com/Gravetar/My_BD/blob/master/Rel2.png "БД с пользователями")
+
+NoSql БД
+...
