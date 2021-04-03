@@ -13,4 +13,6 @@
 
 ![БД с товарами](https://github.com/Gravetar/My_BD/blob/master/Rel1.png "БД с товарами")
 
-БД С пользователями
+БД с пользователями
+
+![БД с пользователями](https://github.com/Gravetar/My_BD/blob/master/Rel2.png "БД с пользователями")
